@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="description" content="Misato Sato — Japan-based Brand & Motion Designer. Authentic brushwork, refined identity, logo animation, and brand motion." />
+<meta name="description" content="Misato Sato — Japan-based Brand & Motion Designer. Real brushwork, clear process, refined identity and logo animation for international brands." />
 <meta name="theme-color" content="#f3f0e8" />
 <meta property="og:title" content="Sumi / Motion — Misato Sato" />
-<meta property="og:description" content="Real brush. Refined identity. Distinctive motion." />
+<meta property="og:description" content="Real brush. Clear process. Refined motion." />
 <meta property="og:type" content="website" />
 <title>Sumi / Motion — Misato Sato</title>
 <style>
@@ -38,18 +38,29 @@ nav{min-height:68px;display:grid;grid-template-columns:1fr auto 1fr;align-items:
 .nav-cta:after{content:"↗";font-size:13px}
 
 .hero{padding:clamp(70px,10vw,140px) 0 54px;border:0}
-.hero-top{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:clamp(38px,8vw,116px);align-items:end;margin-bottom:44px}
-.hero h1{font-size:clamp(58px,9.2vw,138px);line-height:.82;letter-spacing:-.07em;margin:16px 0 0;font-weight:860;max-width:980px}
+.hero-top{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);gap:clamp(38px,8vw,116px);align-items:end;margin-bottom:44px}
+.hero h1{font-size:clamp(58px,9.2vw,138px);line-height:.82;letter-spacing:-.07em;margin:16px 0 0;font-weight:860;max-width:1040px}
 .hero h1 span{display:block;color:var(--red)}
-.hero-copy{padding-bottom:8px}.hero-copy p{font-size:clamp(18px,1.55vw,23px);line-height:1.55;margin:0 0 27px;max-width:560px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.hero-copy{padding-bottom:8px}.hero-copy p{font-size:clamp(18px,1.55vw,23px);line-height:1.55;margin:0 0 27px;max-width:600px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
 .btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--ink);border-radius:999px;padding:0 19px;font-size:13px;font-weight:820;transition:.18s}.btn.primary{background:var(--ink);color:var(--paper)}.btn:hover{transform:translateY(-2px)}
 .hero-reel{position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0}
-.hero-video{position:relative;width:100%;aspect-ratio:16/7;background:#111;overflow:hidden;border-radius:2px;cursor:pointer;border:0;padding:0;color:inherit;text-align:left}.hero-video video{width:100%;height:100%;object-fit:cover}.hero-video:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.05),rgba(0,0,0,.18))}
+.hero-video{position:relative;width:100%;aspect-ratio:16/7;background:#111;overflow:hidden;border-radius:2px;cursor:pointer;border:0;padding:0;color:inherit;text-align:left}.hero-video video{width:100%;height:100%;object-fit:cover}.hero-video:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.03),rgba(0,0,0,.18))}
 .reel-label{position:absolute;left:22px;bottom:20px;z-index:3;color:#fff;display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.13em;text-transform:uppercase;font-weight:800}.reel-play{width:38px;height:38px;border:1px solid rgba(255,255,255,.7);border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.14);backdrop-filter:blur(8px)}.reel-play:before{content:"";border-left:7px solid #fff;border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
 .proofbar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}.proof{padding:17px 18px;border-right:1px solid var(--line);font-size:12px;text-transform:uppercase;letter-spacing:.12em}.proof:first-child{padding-left:0}.proof:last-child{border-right:0}.proof b{display:block;font-size:14px;text-transform:none;letter-spacing:-.01em;margin-bottom:3px}
 
 section{padding:clamp(78px,9vw,128px) 0;border-top:1px solid var(--line)}
-.section-grid{display:grid;grid-template-columns:260px 1fr;gap:clamp(34px,7vw,96px);align-items:start}.section-label{position:sticky;top:100px}.section-label h2{font-size:clamp(34px,4vw,52px);line-height:.95;letter-spacing:-.05em;margin:11px 0 18px}.section-label p{font-size:14px;line-height:1.65;color:var(--muted);max-width:230px;margin:0}
+.section-grid{display:grid;grid-template-columns:260px 1fr;gap:clamp(34px,7vw,96px);align-items:start}.section-label{position:sticky;top:100px}.section-label h2{font-size:clamp(34px,4vw,52px);line-height:.95;letter-spacing:-.05em;margin:11px 0 18px}.section-label p{font-size:14px;line-height:1.65;color:var(--muted);max-width:235px;margin:0}
+
+.client-stack{display:grid;gap:72px}
+.client-project{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(290px,.8fr);gap:clamp(26px,5vw,72px);align-items:center;padding-bottom:72px;border-bottom:1px solid var(--line)}
+.client-project:nth-child(even){grid-template-columns:minmax(290px,.8fr) minmax(0,1.2fr)}
+.client-project:nth-child(even) .client-media{order:2}.client-project:nth-child(even) .client-copy{order:1}
+.client-media{position:relative;width:100%;aspect-ratio:16/10;background:#0d0d0c;overflow:hidden;border:0;padding:0;cursor:pointer;text-align:left}.client-media video{width:100%;height:100%;object-fit:cover}.client-media:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);pointer-events:none}
+.play-chip{position:absolute;left:18px;bottom:18px;display:flex;align-items:center;gap:9px;color:#fff;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;background:rgba(0,0,0,.34);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:9px 12px;backdrop-filter:blur(8px)}
+.play-chip:before{content:"▶";font-size:10px}
+.client-type{font-size:10px;letter-spacing:.19em;text-transform:uppercase;font-weight:850;color:var(--red);margin-bottom:14px}.client-copy h3{font-size:clamp(34px,4.7vw,66px);line-height:.95;letter-spacing:-.055em;margin:0 0 22px}.client-copy .lead{font-size:17px;line-height:1.7;margin:0 0 26px;max-width:620px}.client-copy .body{font-size:14px;line-height:1.72;color:var(--muted);margin:0 0 29px;max-width:620px}.client-meta{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;padding-top:21px;border-top:1px solid var(--line)}.meta-item span{display:block}.meta-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:850;margin-bottom:5px}.meta-value{font-size:12px;line-height:1.5}.permission{margin-top:23px;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+
+.listen{padding:0;border-top:0}.listen-inner{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(54px,8vw,98px) 0;display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(32px,7vw,100px);align-items:end}.listen h2{font-size:clamp(44px,6.2vw,88px);line-height:.9;letter-spacing:-.062em;margin:0;max-width:850px}.listen h2 span{color:var(--red)}.listen-copy p{font-size:18px;line-height:1.65;margin:0 0 28px}.trust-lines{border-top:1px solid var(--line)}.trust-line{padding:13px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;font-size:12px}.trust-line b{font-weight:800}.trust-line span{color:var(--muted);text-align:right}
 
 .work-list{border-top:1px solid var(--line)}
 .work-row{display:grid;grid-template-columns:72px minmax(0,1.1fr) minmax(300px,.9fr);gap:24px;align-items:center;padding:28px 0;border-bottom:1px solid var(--line);cursor:pointer;background:none;border-left:0;border-right:0;text-align:left;width:100%;color:inherit;transition:.2s}
@@ -59,22 +70,23 @@ section{padding:clamp(78px,9vw,128px) 0;border-top:1px solid var(--line)}
 
 .process{background:var(--ink);color:var(--paper)}.process .section-label p{color:#a9a69f}.process .section-label{color:var(--paper)}
 .process-lead{font-size:clamp(38px,5vw,72px);line-height:.98;letter-spacing:-.055em;margin:0 0 48px;max-width:850px}.process-lead em{font-style:normal;color:#9e9a92}
-.steps{border-top:1px solid rgba(255,255,255,.2)}.step{display:grid;grid-template-columns:68px 1fr 1fr;gap:24px;padding:27px 0;border-bottom:1px solid rgba(255,255,255,.2)}.step .n{font-size:11px;letter-spacing:.18em;color:#9e9a92}.step h3{font-size:22px;margin:0}.step p{margin:0;color:#bbb7af;line-height:1.6;font-size:14px}
+.steps{border-top:1px solid rgba(255,255,255,.2)}.step{display:grid;grid-template-columns:68px minmax(220px,.75fr) 1fr;gap:24px;padding:29px 0;border-bottom:1px solid rgba(255,255,255,.2)}.step .n{font-size:11px;letter-spacing:.18em;color:#9e9a92}.step h3{font-size:22px;margin:0;line-height:1.15}.step p{margin:0;color:#bbb7af;line-height:1.6;font-size:14px}
+.process-note{margin-top:42px;padding-left:92px;font-size:clamp(28px,3.4vw,47px);line-height:1.08;letter-spacing:-.045em;max-width:850px}.process-note span{color:#9e9a92}
 
 .services-list{border-top:1px solid var(--line)}.service-row{display:grid;grid-template-columns:72px 1fr minmax(240px,.7fr);gap:24px;padding:30px 0;border-bottom:1px solid var(--line);align-items:start}.service-row h3{font-size:clamp(27px,3.4vw,48px);letter-spacing:-.045em;line-height:1;margin:0}.service-row p{font-size:14px;line-height:1.65;color:var(--muted);margin:0}.service-tag{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--red);font-weight:800}
 
-.about-copy{font-size:clamp(34px,4.8vw,69px);line-height:1.05;letter-spacing:-.052em;margin:0 0 30px;max-width:920px}.about-copy strong{font-weight:860}.about-small{font-size:17px;line-height:1.7;max-width:760px;color:var(--muted);margin:0}.about-meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:30px}.about-meta span{border:1px solid var(--line);padding:8px 11px;border-radius:999px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.about-copy{font-size:clamp(34px,4.8vw,69px);line-height:1.05;letter-spacing:-.052em;margin:0 0 30px;max-width:920px}.about-copy strong{font-weight:860}.about-small{font-size:17px;line-height:1.7;max-width:780px;color:var(--muted);margin:0}.about-meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:30px}.about-meta span{border:1px solid var(--line);padding:8px 11px;border-radius:999px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
 
-.contact{padding-bottom:90px}.contact-card{background:var(--red);color:#fff;padding:clamp(38px,7vw,88px);display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:end}.contact-card h2{font-size:clamp(52px,7.6vw,108px);line-height:.85;letter-spacing:-.065em;margin:0}.contact-right p{font-size:17px;line-height:1.65;margin:0 0 25px;color:rgba(255,255,255,.82)}.contact-links{display:flex;flex-wrap:wrap;gap:9px}.contact-links a{border:1px solid rgba(255,255,255,.64);padding:11px 15px;border-radius:999px;font-size:13px;font-weight:780}.contact-links a:hover{background:#fff;color:var(--red)}
+.contact{padding-bottom:90px}.contact-card{background:var(--red);color:#fff;padding:clamp(38px,7vw,88px);display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:end}.contact-card h2{font-size:clamp(52px,7.6vw,108px);line-height:.85;letter-spacing:-.065em;margin:0}.contact-right p{font-size:17px;line-height:1.65;margin:0 0 13px;color:rgba(255,255,255,.87)}.contact-right .no-pressure{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.67);margin-bottom:25px}.contact-links{display:flex;flex-wrap:wrap;gap:9px}.contact-links a{border:1px solid rgba(255,255,255,.64);padding:11px 15px;border-radius:999px;font-size:13px;font-weight:780}.contact-links a:hover{background:#fff;color:var(--red)}
 footer{border-top:1px solid var(--line);padding:27px 0 40px;color:var(--muted);font-size:11px;letter-spacing:.06em}.footer-row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
 
 dialog{width:min(1060px,calc(100% - 28px));border:0;padding:0;background:#090909;color:#fff;box-shadow:0 40px 120px rgba(0,0,0,.48)}dialog::backdrop{background:rgba(0,0,0,.82);backdrop-filter:blur(9px)}.modal-top{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #292929;font-size:13px}.modal-close{border:1px solid #555;background:none;color:#fff;border-radius:999px;padding:7px 12px;cursor:pointer}.modal-video{width:100%;max-height:78vh;background:#000}
 
 @media(max-width:950px){
- nav{grid-template-columns:1fr auto}.nav-center{display:none}.hero-top,.section-grid,.contact-card{grid-template-columns:1fr}.hero-copy{max-width:720px}.section-label{position:static}.section-label p{max-width:620px}.work-row{grid-template-columns:52px 1fr}.work-thumb{grid-column:2}.step{grid-template-columns:52px 1fr}.step p{grid-column:2}.service-row{grid-template-columns:52px 1fr}.service-row p{grid-column:2}.proofbar{grid-template-columns:1fr 1fr}.proof:nth-child(2){border-right:0}.proof:nth-child(-n+2){border-bottom:1px solid var(--line)}
+ nav{grid-template-columns:1fr auto}.nav-center{display:none}.hero-top,.section-grid,.contact-card,.listen-inner{grid-template-columns:1fr}.hero-copy{max-width:720px}.section-label{position:static}.section-label p{max-width:620px}.client-project,.client-project:nth-child(even){grid-template-columns:1fr;gap:27px}.client-project:nth-child(even) .client-media,.client-project:nth-child(even) .client-copy{order:initial}.work-row{grid-template-columns:52px 1fr}.work-thumb{grid-column:2}.step{grid-template-columns:52px 1fr}.step p{grid-column:2}.process-note{padding-left:76px}.service-row{grid-template-columns:52px 1fr}.service-row p{grid-column:2}.proofbar{grid-template-columns:1fr 1fr}.proof:nth-child(2){border-right:0}.proof:nth-child(-n+2){border-bottom:1px solid var(--line)}
 }
 @media(max-width:600px){
- nav{min-height:62px}.brand small{display:none}.hero{padding-top:48px}.hero h1{font-size:55px}.hero-video{aspect-ratio:4/3}.proof{padding:14px 12px}.proof:first-child{padding-left:12px}.work-row{grid-template-columns:38px 1fr;gap:14px;padding:22px 0}.work-thumb{grid-column:1/-1}.work-name{font-size:31px}.process-lead{font-size:40px}.contact-card{grid-template-columns:minmax(0,1fr);padding:clamp(20px,6vw,38px)}.contact-card h2{font-size:clamp(36px,9vw,56px);overflow-wrap:anywhere}.nav-cta{padding:9px 12px}
+ nav{min-height:62px}.brand small{display:none}.hero{padding-top:48px}.hero h1{font-size:54px}.hero-video{aspect-ratio:4/3}.proof{padding:14px 12px}.proof:first-child{padding-left:12px}.client-stack{gap:54px}.client-project{padding-bottom:54px}.client-media{aspect-ratio:4/3}.client-meta{grid-template-columns:1fr}.listen h2{font-size:48px}.trust-line{display:block}.trust-line span{display:block;text-align:left;margin-top:4px}.work-row{grid-template-columns:38px 1fr;gap:14px;padding:22px 0}.work-thumb{grid-column:1/-1}.work-name{font-size:31px}.process-lead{font-size:40px}.process-note{padding-left:0;font-size:31px}.contact-card h2{font-size:54px}.nav-cta{padding:9px 12px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 </style>
@@ -83,7 +95,7 @@ dialog{width:min(1060px,calc(100% - 28px));border:0;padding:0;background:#090909
 <header>
   <div class="wrap"><nav>
     <a class="brand" href="#top">SUMI / MOTION <small>Misato Sato</small></a>
-    <div class="nav-center"><a href="#work">Work</a><a href="#process">Process</a><a href="#services">Services</a><a href="#about">About</a></div>
+    <div class="nav-center"><a href="#client-work">Work</a><a href="#process">Process</a><a href="#services">Services</a><a href="#about">About</a></div>
     <div class="nav-end"><a class="nav-cta" href="#contact">Start a project</a></div>
   </nav></div>
 </header>
@@ -92,54 +104,109 @@ dialog{width:min(1060px,calc(100% - 28px));border:0;padding:0;background:#090909
 <section class="hero">
   <div class="wrap">
     <div class="hero-top">
-      <div><div class="kicker">Japan-based Brand & Motion Designer</div><h1>REAL BRUSH.<span>REFINED BRAND.</span>MOTION.</h1></div>
-      <div class="hero-copy"><p>I turn authentic hand-drawn brushwork into distinctive identities and motion — and create refined brand animation beyond ink when the project calls for it.</p><div class="hero-actions"><a class="btn primary" href="#work">See selected work</a><a class="btn" href="#contact">Tell me about your project</a></div></div>
+      <div><div class="kicker">Japan-based Brand & Motion Designer</div><h1>REAL BRUSH.<span>CLEAR PROCESS.</span>REFINED MOTION.</h1></div>
+      <div class="hero-copy"><p>Japanese brushwork and brand motion, created with careful listening, clear communication, and no unnecessary complexity.</p><div class="hero-actions"><a class="btn primary" href="#client-work">See client work</a><a class="btn" href="#contact">Tell me about your project</a></div></div>
     </div>
     <div class="hero-reel">
       <button class="hero-video" type="button" data-video="assets/hero.mp4" data-title="Sumi / Motion — Selected Reel" aria-label="Play selected motion reel"><video autoplay muted loop playsinline poster="assets/hero-poster.jpg"><source src="assets/hero.mp4" type="video/mp4"></video><span class="reel-label"><span class="reel-play"></span>Play selected reel</span></button>
     </div>
-    <div class="proofbar" aria-label="Core strengths">
-      <div class="proof"><b>Real brush first</b>Physical ink, not a brush font</div>
-      <div class="proof"><b>Identity + motion</b>Designed as one visual system</div>
-      <div class="proof"><b>Brand-ready</b>Refined for practical use</div>
+    <div class="proofbar" aria-label="Working principles">
+      <div class="proof"><b>Real brush, when it fits</b>Physical ink — never forced</div>
+      <div class="proof"><b>Clear scope first</b>Use, tone and deliverables clarified</div>
+      <div class="proof"><b>Fast, considered work</b>Efficient without rushing the craft</div>
       <div class="proof"><b>Based in Japan</b>Available internationally</div>
     </div>
   </div>
 </section>
 
-<section id="work">
+<section id="client-work">
   <div class="wrap section-grid">
-    <aside class="section-label"><div class="kicker">Selected work</div><h2>Four ways I build a brand impression.</h2><p>Open any project to watch the motion. Each piece shows a different range — from real brush to beauty and luxury brand animation.</p></aside>
+    <aside class="section-label"><div class="kicker">Selected client work</div><h2>Work built for real brands.</h2><p>Commissioned projects created around an existing identity, practical delivery needs, and the client’s intended use.</p></aside>
+    <div class="client-stack">
+      <article class="client-project">
+        <button class="client-media" type="button" data-video="assets/kobudera.mp4" data-title="KOBUDERA PICTURES — Custom Ink Logo Animation" aria-label="Play KOBUDERA PICTURES logo animation"><video autoplay muted loop playsinline poster="assets/kobudera-poster.jpg"><source src="assets/kobudera.mp4" type="video/mp4"></video><span class="play-chip">Play project</span></button>
+        <div class="client-copy">
+          <div class="client-type">Client work / Custom ink logo animation</div>
+          <h3>KOBUDERA PICTURES</h3>
+          <p class="lead">A custom logo animation created from an existing brand mark, combining handcrafted brush texture with precise digital motion.</p>
+          <p class="body">The animation was designed to feel tactile and cinematic while keeping the original identity clear and recognizable.</p>
+          <div class="client-meta">
+            <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Motion Design / Logo Animation</span></div>
+            <div class="meta-item"><span class="meta-label">Deliverables</span><span class="meta-value">Custom logo animation / Black & white versions / Transparent-background versions</span></div>
+            <div class="meta-item"><span class="meta-label">Tools</span><span class="meta-value">Adobe After Effects / Adobe Illustrator</span></div>
+          </div>
+          <div class="permission">Published with client permission</div>
+        </div>
+      </article>
+
+      <article class="client-project">
+        <button class="client-media" type="button" data-video="assets/tattoo-brand.mp4" data-title="Tattoo Artist Brand — Custom Brand Logo Animation" aria-label="Play tattoo artist brand logo animation"><video autoplay muted loop playsinline poster="assets/tattoo-brand-poster.jpg"><source src="assets/tattoo-brand.mp4" type="video/mp4"></video><span class="play-chip">Play project</span></button>
+        <div class="client-copy">
+          <div class="client-type">Client work / Custom brand logo animation</div>
+          <h3>TATTOO ARTIST BRAND</h3>
+          <p class="lead">A restrained logo animation created to complement an existing visual identity without overpowering it.</p>
+          <p class="body">The motion focuses on the gradual construction of the mark, using controlled timing and a minimal reveal to preserve the handcrafted character of the original design.</p>
+          <div class="client-meta">
+            <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Motion Design / Logo Animation</span></div>
+            <div class="meta-item"><span class="meta-label">Deliverables</span><span class="meta-value">5-second logo animation / HD delivery / Transparent-background version</span></div>
+            <div class="meta-item"><span class="meta-label">Tools</span><span class="meta-value">Adobe After Effects / Adobe Illustrator</span></div>
+          </div>
+          <div class="permission">Published with client permission</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="listen">
+  <div class="wrap listen-inner">
+    <h2>CLIENT WORK BEGINS <span>WITH LISTENING.</span></h2>
+    <div class="listen-copy">
+      <p>I clarify the brand, intended use, timing, and required deliverables before production — so there are fewer surprises later.</p>
+      <div class="trust-lines">
+        <div class="trust-line"><b>A rough brief is enough.</b><span>I’ll help clarify what matters.</span></div>
+        <div class="trust-line"><b>Clear before complicated.</b><span>No unnecessary effects or process.</span></div>
+        <div class="trust-line"><b>Honest about fit.</b><span>If another direction serves the brand better, I’ll say so.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="concept-work">
+  <div class="wrap section-grid">
+    <aside class="section-label"><div class="kicker">Selected concept work</div><h2>Exploration beyond the brief.</h2><p>Self-directed studies used to explore different brand tones — from authentic ink to beauty and luxury motion.</p></aside>
     <div class="work-list">
-      <button class="work-row" data-video="assets/nami.mp4" data-title="NAMI SUSHI — Ink Logo & Motion Identity"><span class="work-no">01</span><span><span class="work-name">NAMI SUSHI</span><span class="work-desc">Ink logo · Motion identity · Real brush texture</span></span><span class="work-thumb"><img src="assets/nami.webp" alt="NAMI SUSHI project cover"><span class="work-arrow">▶</span></span></button>
-      <button class="work-row" data-video="assets/lumi.mp4" data-title="Lumi — Beauty Brand Motion"><span class="work-no">02</span><span><span class="work-name">Lumi</span><span class="work-desc">Beauty · Minimal typography · Product motion</span></span><span class="work-thumb"><img src="assets/lumi.webp" alt="Lumi beauty brand motion cover"><span class="work-arrow">▶</span></span></button>
-      <button class="work-row" data-video="assets/sansui.mp4" data-title="SANSUI — Japanese Calligraphy Logo"><span class="work-no">03</span><span><span class="work-name">SANSUI</span><span class="work-desc">Original brushwork · Logo refinement · Identity</span></span><span class="work-thumb"><img src="assets/sansui.webp" alt="SANSUI calligraphy logo cover"><span class="work-arrow">▶</span></span></button>
-      <button class="work-row" data-video="assets/luxury.mp4" data-title="Luxury Brand Logo Reveal"><span class="work-no">04</span><span><span class="work-name">Luxury Logo Reveal</span><span class="work-desc">Hospitality · Gold-on-black · 5-second motion</span></span><span class="work-thumb"><img src="assets/luxury.webp" alt="Luxury logo reveal cover"><span class="work-arrow">▶</span></span></button>
+      <button class="work-row" data-video="assets/nami.mp4" data-title="NAMI SUSHI — Ink Logo & Motion Identity"><span class="work-no">01</span><span><span class="work-name">NAMI SUSHI</span><span class="work-desc">Ink logo · Motion identity · Real brush texture</span></span><span class="work-thumb"><img src="assets/nami.webp" alt="NAMI SUSHI concept project cover"><span class="work-arrow">▶</span></span></button>
+      <button class="work-row" data-video="assets/sansui.mp4" data-title="SANSUI — Japanese Calligraphy Logo"><span class="work-no">02</span><span><span class="work-name">SANSUI</span><span class="work-desc">Original brushwork · Logo refinement · Identity</span></span><span class="work-thumb"><img src="assets/sansui.webp" alt="SANSUI calligraphy logo concept cover"><span class="work-arrow">▶</span></span></button>
+      <button class="work-row" data-video="assets/luxury.mp4" data-title="Luxury Brand Logo Reveal"><span class="work-no">03</span><span><span class="work-name">Luxury Logo Reveal</span><span class="work-desc">Hospitality · Gold-on-black · 5-second motion</span></span><span class="work-thumb"><img src="assets/luxury.webp" alt="Luxury logo reveal concept cover"><span class="work-arrow">▶</span></span></button>
+      <button class="work-row" data-video="assets/lumi.mp4" data-title="Lumi — Beauty Brand Motion"><span class="work-no">04</span><span><span class="work-name">Lumi</span><span class="work-desc">Beauty · Minimal typography · Product motion</span></span><span class="work-thumb"><img src="assets/lumi.webp" alt="Lumi beauty brand motion concept cover"><span class="work-arrow">▶</span></span></button>
     </div>
   </div>
 </section>
 
 <section class="process" id="process">
   <div class="wrap section-grid">
-    <aside class="section-label"><div class="kicker">The process</div><h2>Handmade where it matters. Precise where it counts.</h2><p>The brush is not decoration. It is the source material for a controlled brand system.</p></aside>
+    <aside class="section-label"><div class="kicker">Working together</div><h2>Clear from the first message.</h2><p>A simple process designed to keep communication easy, decisions useful, and production moving.</p></aside>
     <div>
-      <p class="process-lead">Not a brush font.<br><em>Not a generic template.</em></p>
+      <p class="process-lead">Thoughtful where it matters.<br><em>Efficient everywhere else.</em></p>
       <div class="steps">
-        <div class="step"><span class="n">01</span><h3>Brush</h3><p>Original marks are drawn by hand with physical ink on paper to create forms with real pressure, rhythm and irregularity.</p></div>
-        <div class="step"><span class="n">02</span><h3>Refine</h3><p>Shape, balance and legibility are edited digitally so the work can function as a real identity — not just an expressive mark.</p></div>
-        <div class="step"><span class="n">03</span><h3>Motion</h3><p>The reveal is designed around the character of the logo. Timing and texture support the identity instead of overpowering it.</p></div>
+        <div class="step"><span class="n">01</span><h3>Tell me what you’re trying to achieve.</h3><p>You don’t need a perfect brief. A rough idea, reference, current logo, or even a question is enough to start.</p></div>
+        <div class="step"><span class="n">02</span><h3>I clarify what matters.</h3><p>Audience, intended use, tone, deliverables, timing and technical requirements are aligned before production begins.</p></div>
+        <div class="step"><span class="n">03</span><h3>I work quickly, without rushing the craft.</h3><p>I keep the process moving and communication straightforward while protecting the details that make the work feel considered.</p></div>
+        <div class="step"><span class="n">04</span><h3>You receive work ready to use.</h3><p>Final files are prepared cleanly and delivered in the agreed formats, with the practical application in mind.</p></div>
       </div>
+      <p class="process-note">Fast when it helps. <span>Never rushed where craft matters.</span></p>
     </div>
   </div>
 </section>
 
 <section id="services">
   <div class="wrap section-grid">
-    <aside class="section-label"><div class="kicker">Services</div><h2>What you can hire me for.</h2><p>Focused services for brands that need a distinctive identity, a refined reveal, or a visual language with more character than a template.</p></aside>
+    <aside class="section-label"><div class="kicker">Services</div><h2>Three focused ways to work together.</h2><p>Clear scopes for brands that need a handcrafted identity, a distinctive ink reveal, or refined motion without the brush aesthetic.</p></aside>
     <div class="services-list">
-      <div class="service-row"><span class="service-tag">01 / Identity</span><h3>Japanese Calligraphy Logo Design</h3><p>Original brushwork developed into a clean, usable logo mark for print, digital and brand applications.</p></div>
-      <div class="service-row"><span class="service-tag">02 / Motion</span><h3>Ink Logo Animation</h3><p>Short logo reveals built around the movement of real ink, with cinematic pacing and controlled texture.</p></div>
-      <div class="service-row"><span class="service-tag">03 / Brand</span><h3>Custom Brand Motion</h3><p>Refined motion concepts for beauty, hospitality, lifestyle and premium brands — with or without brushwork.</p></div>
+      <div class="service-row"><span class="service-tag">01 / Identity</span><h3>Handcrafted Japanese Calligraphy Logo Design</h3><p>Original brushwork created by hand, then digitally refined into a practical, brand-ready logo.</p></div>
+      <div class="service-row"><span class="service-tag">02 / Ink motion</span><h3>Real Brush Ink Logo Animation</h3><p>Custom logo animation using real ink texture and controlled motion for brands that need more character than a template reveal.</p></div>
+      <div class="service-row"><span class="service-tag">03 / Motion</span><h3>Refined Logo Animation for Premium Brands</h3><p>Clean, elegant motion tailored to an existing identity for hospitality, beauty, lifestyle and premium brands.</p></div>
     </div>
   </div>
 </section>
@@ -147,12 +214,12 @@ dialog{width:min(1060px,calc(100% - 28px));border:0;padding:0;background:#090909
 <section id="about">
   <div class="wrap section-grid">
     <aside class="section-label"><div class="kicker">About</div><h2>Misato Sato</h2><p>Brand & Motion Designer and ink artist based in Japan.</p></aside>
-    <div><p class="about-copy">I work at the point where <strong>handmade imperfection</strong> meets controlled brand design.</p><p class="about-small">My work spans identity, logo animation and visual communication. I use real brushwork when it adds meaning, and clean digital design when restraint is the stronger choice. The goal is always the same: a brand impression that feels deliberate, distinctive and usable.</p><div class="about-meta"><span>Brand identity</span><span>Motion design</span><span>Real brush</span><span>International projects</span></div></div>
+    <div><p class="about-copy">I combine <strong>handmade character</strong> with clear, practical brand design.</p><p class="about-small">My work spans identity, logo animation and visual communication. I use real brushwork when it adds meaning, and clean digital design when restraint is the stronger choice. I value clear communication, useful questions and a process that keeps moving without making the client feel rushed.</p><div class="about-meta"><span>Brand identity</span><span>Motion design</span><span>Real brush</span><span>International projects</span></div></div>
   </div>
 </section>
 
 <section class="contact" id="contact">
-  <div class="wrap"><div class="contact-card"><h2>LET'S MAKE IT DISTINCTIVE.</h2><div class="contact-right"><p>Have a logo, identity or motion project in mind? Send the brief, the current logo if you have one, and the feeling you want the brand to leave behind.</p><div class="contact-links"><a href="https://www.fiverr.com/akirlan" target="_blank" rel="noreferrer">Hire on Fiverr ↗</a><a href="https://www.instagram.com/sumi.logo.motion/" target="_blank" rel="noreferrer">Instagram ↗</a></div></div></div></div>
+  <div class="wrap"><div class="contact-card"><h2>TELL ME WHAT YOU’RE WORKING ON.</h2><div class="contact-right"><p>Not sure what you need yet? That’s completely fine. Send me your idea, reference, current logo, or even a rough question.</p><p class="no-pressure">No pressure to order.</p><div class="contact-links"><a href="https://www.fiverr.com/akirlan" target="_blank" rel="noreferrer">Message me on Fiverr ↗</a><a href="https://www.instagram.com/sumi.logo.motion/" target="_blank" rel="noreferrer">Instagram ↗</a></div></div></div></div>
 </section>
 </main>
 
