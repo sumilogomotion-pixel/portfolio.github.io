@@ -34,3 +34,5 @@ body.japan,body.japan h1,body.japan h2,body.japan h3,body.japan p,body.japan a,b
 
 /* Explicit square Gothic UI typography */
 body.japan,body.japan :is(h1,h2,h3,p,a,button,summary,span,figcaption){font-family:"Yu Gothic UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;font-weight:500;font-style:normal;letter-spacing:normal}.county-back{font-size:16px}.county-works figcaption span{font-size:14px}
+
+.japan .viewer-header{gap:8px;flex-wrap:wrap}.japan .viewer-count{font-size:14px;line-height:1.5;white-space:normal}.japan .viewer-close{min-height:44px;flex-shrink:0}
