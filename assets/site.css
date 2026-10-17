@@ -1,0 +1,13 @@
+
+/* Migration finishing: navigation, inquiry composition, and small screens. */
+html{scroll-padding-top:100px}img,video{max-width:100%}a,button,input,select,textarea{touch-action:manipulation}
+.skip{position:fixed;top:-100px;left:20px;z-index:100;background:#111;color:#fff;padding:12px 18px}.skip:focus{top:12px}
+input,select,textarea{font:inherit}input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #a82e27;outline-offset:3px}
+.nav-center{flex-wrap:wrap}.hero-art .main-image{object-fit:contain}.inquiry-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}.inquiry-fields label,.inquiry-output>label{display:block;font-size:12px;font-weight:700;margin:0 0 9px}.inquiry-fields input,.inquiry-fields select,.inquiry-fields textarea,.inquiry-output>textarea{display:block;width:100%;max-width:100%;border:1px solid #aaa59b;border-radius:3px;background:#fffdf8;color:#111;padding:13px;font-size:14px;line-height:1.7;margin:0 0 22px}.inquiry-fields textarea,.inquiry-output textarea{resize:vertical}.inquiry-pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}.inquiry-output{background:#e9e4d8;padding:28px}.inquiry-output>textarea{font-size:13px;line-height:1.9}.inquiry-output button{cursor:pointer}.inquiry-output>p{font-size:11px;line-height:1.9;color:#605d56;min-height:42px}.inquiry-output .actions{gap:25px}.footer-row a{text-underline-offset:4px}.footer-row a:hover{text-decoration:underline}
+@media(max-width:1050px){header .nav-center{gap:14px;font-size:11px}}
+@media(max-width:720px){.inquiry-grid{grid-template-columns:1fr;gap:22px}.inquiry-output{padding:22px}.inquiry-pair{grid-template-columns:1fr;gap:0}.nav-center{gap:12px!important}.nav-center a{font-size:11px}.nav-links .pill{white-space:nowrap}.hero-art .main-image{aspect-ratio:1.65}}
+@media(max-width:420px){.nav-end .nav-cta{font-size:10px;padding:10px}.nav-links{gap:10px}.inquiry-output{padding:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Explicit auto height prevents HTML intrinsic heights from stretching responsive images. */
+img{height:auto} .hero-art .main-image{height:auto}.hero-art .inset{height:auto}
