@@ -1,0 +1,16 @@
+{
+  "baseline_commit": "9ba3ad9a60e047e60d6a92580dc7e69c03d96da8",
+  "published": false,
+  "changed_paths": [
+    {
+      "path": "art/assets/seasons/summer-main-20261018.jpg",
+      "bytes": 257787,
+      "sha256": "a6b0527aee24fabbb7740beea802be0ab036534f55e858a1af41ab78ca5b068f"
+    },
+    {
+      "path": "art/kutan/seasons/seasons-data.js",
+      "bytes": 4817,
+      "sha256": "a76b21ca36b8ce06366bd03ecaea00ff7980ad1786b2ea85d21f94f47c5ecbe8"
+    }
+  ]
+}
