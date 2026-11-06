@@ -5,3 +5,9 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 
 .collection-progress{font-size:14px;line-height:1.6;margin:4px 0 0;color:#4d574c}.person h2{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.person-position{font-size:14px;font-weight:500;white-space:nowrap;color:#4d574c}.season-jumps [aria-current=true]{font-weight:700;text-decoration-thickness:2px}#viewer-count{font-size:14px;line-height:1.5;max-width:calc(100% - 84px)}.viewer-top{gap:10px}.viewer-top #viewer-close{flex-shrink:0}.viewer-top [role=status]{overflow-wrap:anywhere}
+
+/* Keep page links available inside the full-screen artwork viewer. */
+#art-viewer[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;height:100vh;height:100dvh;overflow-y:auto}
+#art-viewer .viewer-top{height:auto;min-height:62px}
+#art-viewer .viewer-image{height:auto;min-height:0}
+#art-viewer .viewer-bottom{width:100%}
