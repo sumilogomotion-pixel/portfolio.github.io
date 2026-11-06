@@ -73,6 +73,7 @@ function movement(state,distance,side=0){
  state.x=clamp(state.x-Math.sin(state.yaw)*distance+Math.cos(state.yaw)*side,-4.15,4.15);
  state.z=clamp(state.z-Math.cos(state.yaw)*distance-Math.sin(state.yaw)*side,-33.5,10);
 }
+const gateAnatomy=["heart","brain","eye-l","eye-r","lung-l","lung-r","liver","stomach","pancreas","intestines"];
 function cssWorld(reason){
  canvas.hidden=true;stage.classList.add('css-world-active');stage.dataset.renderer='css-3d';stage.dataset.graphicsReason=reason;
  const view=document.createElement('div');view.className='css-world';view.setAttribute('aria-label','立体展示室。ドラッグして見渡せます。');const camera=document.createElement('div');camera.className='css-camera';view.append(camera);stage.insertBefore(view,canvas);
@@ -93,6 +94,8 @@ function cssWorld(reason){
  ['art',-230,-65,290,340,255,'rotateY(180deg)','eye-l'],
  ['art',230,-65,290,340,255,'rotateY(180deg)','eye-r']
  ];
+ // The reverse of Gateway is a ten-work Silent Anatomy display.
+ gateAnatomy.forEach((file,i)=>planes.push(['art',(i%2===0?83:-83),-210+Math.floor(i/2)*105,-904,132,99,'rotateY(180deg)',file]));
  for(const [type,x,y,z,w,h,rotation,file]of planes){const e=document.createElement('div');e.className='world-plane '+type;e.style.width=w+'px';e.style.height=h+'px';e.style.transform=`translate3d(${x-w/2}px,${y-h/2}px,${z}px) ${rotation}`;if(file){e.style.backfaceVisibility='hidden';const img=document.createElement('img');img.src='../assets/'+file+'.webp';img.alt='';img.draggable=false;e.append(img);}camera.append(e);}
  const state={x:0,z:9,yaw:0};let pitch=0;
  view.style.perspective='800px';
@@ -118,12 +121,13 @@ for(let d=9;d>=-35;d-=3)plane(0,-2.795,d,10,.014,'floor',[.69,.69,.68,1]);for(le
 for(let d=-4;d>=-32;d-=7){plane(-4.995,.6,d,.025,6.8,'side',[.75,.75,.74,1]);plane(4.995,.6,d,.025,6.8,'side',[.8,.8,.79,1]);}
 // Gate is a freestanding canvas at the entrance. Only its center is a passage in this virtual view.
 plane(0,0,.02,4.15,5.53,'front',[.2,.2,.2,1],'../assets/gateway.webp',true);
-plane(0,0,-.02,4.15,5.53,'rear',[.92,.91,.88,1]);
+// No blank backing: the reverse face is the Silent Anatomy display below.
 // A thin physical surround and foot, rather than a full-screen flat image.
 plane(-2.11,0,0,.06,5.6,'front',[.25,.25,.24,1]);plane(2.11,0,0,.06,5.6,'front',[.25,.25,.24,1]);plane(0,-2.77,.13,4.4,.18,'floor',[.45,.45,.44,1]);
 function artwork(x,y,d,w,h,axis,file){plane(x+(axis==='side'?(x<0?-.025:.025):0),y,d+(axis==='rear'?.025:-.025),w+.09,h+.09,axis,[.20,.20,.19,1]);plane(x,y,d,w,h,axis,[1,1,1,1],'../assets/'+file+'.webp');}
 artwork(-4.96,.65,-7,3.7,2.77,'side','revive');artwork(4.96,.65,-9,2.6,3.47,'side','canvas-work');artwork(-4.96,.65,-16,2.6,3.47,'side','yume-wo-miru');artwork(4.96,.65,-18,2.6,3.47,'side','shinryu');artwork(-2.3,.7,-35,3.4,2.55,'front','heart');artwork(2.3,.7,-35,3.4,2.55,'front','brain');
 artwork(-2.3,.65,11.9,3.4,2.55,'rear','eye-l');artwork(2.3,.65,11.9,3.4,2.55,'rear','eye-r');
+gateAnatomy.forEach((file,i)=>artwork(i%2===0?.83:-.83,2.1-Math.floor(i/2)*1.05,-.04,1.32,.99,'rear',file));
 function perspective(fov,aspect,n,f){let t=1/Math.tan(fov/2);return [t/aspect,0,0,0,0,t,0,0,0,0,(f+n)/(n-f),-1,0,0,2*f*n/(n-f),0];}
 function mul(a,b){let out=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++)for(let k=0;k<4;k++)out[c*4+r]+=a[k*4+r]*b[c*4+k];return out;}
 function view(ex,ey,ez,ya,pi){const sx=Math.sin(ya),cx=Math.cos(ya),sp=Math.sin(pi),cp=Math.cos(pi);const r=[cx,0,-sx],up=[sx*sp,cp,cx*sp],back=[sx*cp,-sp,cx*cp];return [r[0],up[0],back[0],0,r[1],up[1],back[1],0,r[2],up[2],back[2],0,-(r[0]*ex+r[1]*ey+r[2]*ez),-(up[0]*ex+up[1]*ey+up[2]*ez),-(back[0]*ex+back[1]*ey+back[2]*ez),1];}
