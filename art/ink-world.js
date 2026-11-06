@@ -3,6 +3,7 @@ const canvas=document.querySelector('#gallery-world');if(!canvas)return;
 const stage=canvas.parentElement, enter=document.querySelector('#enter-world'), motion=document.querySelector('#world-motion'),status=document.querySelector('.world-status');
 // Shared input state for both renderers. A hold never inherits an automatic journey.
 function controls(surface,adapter){
+ const forwardSpeed=1.2;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const progress=document.querySelector('.world-progress'),back=document.querySelector('#world-back');
  let mode='idle',direction=1,pointer=null,timer=0,originX=0,originY=0,lastX=0,lastY=0,dragging=false,previous=performance.now(),backPointer=null,backTimer=0,backHeld=false;
@@ -25,7 +26,7 @@ function controls(surface,adapter){
   if(!e.isPrimary||e.button!==0)return;stop();surface.focus({preventScroll:true});
   pointer=e.pointerId;originX=lastX=e.clientX;originY=lastY=e.clientY;
   surface.setPointerCapture(e.pointerId);
-  timer=setTimeout(()=>{timer=0;if(pointer!==null&&!dragging){direction=1;mode='hold';if(reduced){move(.65);mode='idle';}update();}},350);update();
+  timer=setTimeout(()=>{timer=0;if(pointer!==null&&!dragging){direction=1;mode='hold';if(reduced){move(.65*forwardSpeed);mode='idle';}update();}},350);update();
  });
  surface.addEventListener('pointermove',e=>{
   if(e.pointerId!==pointer)return;
@@ -42,7 +43,7 @@ function controls(surface,adapter){
   if(!['arrowleft','arrowright','arrowup','arrowdown','w','a','s','d','escape','home'].includes(key))return;
   e.preventDefault();stop();
   if(key==='arrowleft'||key==='arrowright')adapter.look(key==='arrowleft'?-35:35,0);
-  if(key==='arrowup'||key==='w')move(.5);
+  if(key==='arrowup'||key==='w')move(.5*forwardSpeed);
   if(key==='arrowdown'||key==='s')move(-.5);
   if(key==='a'||key==='d')move(0,key==='a'?-.5:.5);
   if(key==='home')adapter.reset();
@@ -61,8 +62,8 @@ function controls(surface,adapter){
  back.addEventListener('contextmenu',e=>e.preventDefault());
  function tick(now){
   const dt=Math.min((now-previous)/1000,.06);previous=now;
-  if(mode==='hold')move(direction*dt*2.4);
-  if(mode==='auto'){const v=Math.min(1,adapter.progress()+dt/10);adapter.position(v);if(v===1){mode='idle';status.textContent='展示室の奥です。後ろにも作品があります。';}update();}
+  if(mode==='hold')move(direction*dt*2.4*(direction>0?forwardSpeed:1));
+  if(mode==='auto'){const v=Math.min(1,adapter.progress()+dt*forwardSpeed/10);adapter.position(v);if(v===1){mode='idle';status.textContent='展示室の奥です。後ろにも作品があります。';}update();}
   requestAnimationFrame(tick);
  }
  adapter.reset();update();requestAnimationFrame(tick);
