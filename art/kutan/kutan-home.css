@@ -4,3 +4,5 @@
 
 
 .runner.is-dragging{cursor:grabbing}.scene{max-width:864px}.scene-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}.scene-card img{margin-inline:auto}#play-status{pointer-events:none}@media(max-width:600px){.scene-grid{grid-template-columns:1fr;gap:32px}.scene{max-width:560px}#play-status{font-size:14px}}
+
+.playground.is-roaming{overflow:visible;z-index:30}.runner{ -webkit-touch-callout:none }.runner.is-dragging{z-index:31}

@@ -8,18 +8,9 @@
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const poster = '../assets/relay/05_run.png', gif = '../assets/relay/05_run.gif';
   let animation = null, timer = null, playing = false, gesture = null;
-  let ignoreClick = false, clickTimer = null;
+  let ignoreClick = false, clickTimer = null, frame = null, lastFrame = null;
   const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
-  function limits() {
-    return { x: Math.max(0, area.clientWidth - button.offsetWidth),
-      y: Math.max(0, area.clientHeight - button.offsetHeight - 64) };
-  }
-  function position(x, y) {
-    const edge = limits();
-    button.style.left = clamp(x, 0, edge.x) + 'px';
-    button.style.top = clamp(y, 0, edge.y) + 'px';
-  }
-  function stop(message = 'もういちど、ふれてみて') {
+  function stop(message = 'タップでとことこ · はなすともどるよ') {
     clearTimeout(timer);
     animation?.cancel();
     animation = null;
@@ -28,90 +19,145 @@
     control.hidden = true;
     status.textContent = message;
   }
+  function showPosition() {
+    if (!gesture?.moved) return;
+    const g = gesture;
+    const x = clamp(g.clientX + scrollX - g.grabX, 0, Math.max(0, g.pageWidth - g.width));
+    const y = clamp(g.clientY + scrollY - g.grabY, 0, Math.max(0, g.pageHeight - g.height));
+    g.dx = x - g.homeX;
+    g.dy = y - g.homeY;
+    button.style.transform = `translate(${g.dx}px, ${g.dy}px)`;
+  }
+  function autoScroll(now) {
+    if (!gesture?.moved) { frame = null; return; }
+    const elapsed = Math.min(40, lastFrame === null ? 16 : now - lastFrame);
+    lastFrame = now;
+    // Only scroll while the held pointer is near a viewport edge. This lets
+    // one-finger touch dragging reach the entire document, not just the screen.
+    const edge = Math.min(64, innerHeight / 5);
+    const y = gesture.clientY;
+    let velocity = y < edge ? -(edge - y) / edge : y > innerHeight - edge ? (y - innerHeight + edge) / edge : 0;
+    velocity = clamp(velocity, -1, 1);
+    const next = clamp(scrollY + velocity * elapsed * .65, 0, Math.max(0, gesture.pageHeight - innerHeight));
+    if (Math.abs(next - scrollY) > .1) window.scrollTo({ top: next, left: scrollX, behavior: 'instant' });
+    showPosition();
+    frame = requestAnimationFrame(autoScroll);
+  }
   function endGesture(cancelled = false) {
     if (!gesture) return;
-    const { id, moved } = gesture;
+    const g = gesture;
     gesture = null;
+    cancelAnimationFrame(frame);
+    frame = null;
+    lastFrame = null;
+    if (g.id !== null && button.hasPointerCapture(g.id)) button.releasePointerCapture(g.id);
     button.classList.remove('is-dragging');
-    if (button.hasPointerCapture(id)) button.releasePointerCapture(id);
-    if (moved || cancelled) {
+    stop(g.moved ? 'おかえり。もういちど、あそぼう' : undefined);
+    const from = button.style.transform || 'translate(0px, 0px)';
+    button.style.transform = '';
+    if (g.moved || cancelled) {
       ignoreClick = true;
       clearTimeout(clickTimer);
       clickTimer = setTimeout(() => { ignoreClick = false; }, 700);
-      stop('ここに、ぴたっ。');
-    }
+      if (g.moved && !cancelled && !reduce.matches) {
+        animation = button.animate([{ transform: from }, { transform: 'translate(0px, 0px)' }], { duration: 360, easing: 'ease-out' });
+        timer = setTimeout(() => { animation?.cancel(); animation = null; area.classList.remove('is-roaming'); }, 360);
+      } else area.classList.remove('is-roaming');
+    } else area.classList.remove('is-roaming');
   }
   function play() {
     stop();
-    if (reduce.matches) {
-      status.textContent = 'ドラッグでうごかせるよ';
-      return;
-    }
+    area.classList.remove('is-roaming');
+    if (reduce.matches) { status.textContent = 'ドラッグでおさんぽ。はなすともどるよ'; return; }
     playing = true;
     image.src = gif;
     control.hidden = false;
     status.textContent = 'とことこ';
-    const edge = limits(), x = button.offsetLeft;
+    const space = Math.max(0, area.clientWidth - button.offsetWidth), x = button.offsetLeft;
     animation = button.animate([
       { transform: 'translateX(0)' },
-      { transform: `translateX(${edge.x - x}px)`, offset: .35 },
+      { transform: `translateX(${space - x}px)`, offset: .35 },
       { transform: `translateX(${-x}px)`, offset: .75 },
       { transform: 'translateX(0)' }
     ], { duration: 2960, easing: 'ease-in-out' });
     timer = setTimeout(() => stop(), 2960);
   }
-  button.addEventListener('pointerdown', event => {
-    if (gesture || event.isPrimary === false || event.button !== 0) return;
-    // Freeze at the visible position when a running character is picked up.
-    const rect = button.getBoundingClientRect(), bounds = area.getBoundingClientRect();
-    stop('つかんで、うごかしてみて');
-    position(rect.left - bounds.left, rect.top - bounds.top);
+  function begin(clientX, clientY, id) {
+    const visible = button.getBoundingClientRect();
+    stop('ページをおさんぽ。はなすともどるよ');
+    button.style.transform = '';
+    const home = button.getBoundingClientRect();
+    gesture = { id, clientX, clientY, startX: clientX, startY: clientY,
+      grabX: clientX - visible.left, grabY: clientY - visible.top,
+      homeX: home.left + scrollX, homeY: home.top + scrollY,
+      width: home.width, height: home.height,
+      pageWidth: document.documentElement.clientWidth,
+      pageHeight: Math.max(document.documentElement.scrollHeight, document.body.scrollHeight),
+      moved: false, dx: 0, dy: 0 };
     ignoreClick = false;
     clearTimeout(clickTimer);
-    gesture = { id: event.pointerId, startX: event.clientX, startY: event.clientY,
-      x: button.offsetLeft, y: button.offsetTop, moved: false };
+    area.classList.add('is-roaming');
+    button.style.transform = `translate(${visible.left - home.left}px, ${visible.top - home.top}px)`;
+  }
+  function move() {
+    if (!gesture.moved) {
+      gesture.moved = true;
+      button.classList.add('is-dragging');
+      if (!reduce.matches) image.src = gif;
+      status.textContent = 'とことこ、どこへ？';
+    }
+    showPosition();
+  }
+  button.addEventListener('pointerdown', event => {
+    if (gesture || event.isPrimary === false || event.button !== 0) return;
+    begin(event.clientX, event.clientY, event.pointerId);
     button.setPointerCapture(event.pointerId);
   });
   button.addEventListener('pointermove', event => {
     if (!gesture || event.pointerId !== gesture.id) return;
-    const dx = event.clientX - gesture.startX, dy = event.clientY - gesture.startY;
-    if (!gesture.moved && Math.hypot(dx, dy) < 6) return;
-    gesture.moved = true;
-    button.classList.add('is-dragging');
-    if (!reduce.matches && image.getAttribute('src') !== gif) image.src = gif;
-    position(gesture.x + dx, gesture.y + dy);
-    status.textContent = 'とことこ、どこへ？';
+    gesture.clientX = event.clientX;
+    gesture.clientY = event.clientY;
+    if (!gesture.moved && Math.hypot(event.clientX - gesture.startX, event.clientY - gesture.startY) < 6) return;
+    move();
+    if (frame === null) frame = requestAnimationFrame(autoScroll);
   });
-  button.addEventListener('pointerup', event => {
-    if (gesture?.id === event.pointerId) endGesture();
-  });
-  button.addEventListener('pointercancel', event => {
-    if (gesture?.id === event.pointerId) endGesture(true);
-  });
-  button.addEventListener('lostpointercapture', event => {
-    if (gesture?.id === event.pointerId) endGesture(true);
-  });
+  button.addEventListener('pointerup', e => { if (gesture?.id === e.pointerId) endGesture(); });
+  button.addEventListener('pointercancel', e => { if (gesture?.id === e.pointerId) endGesture(true); });
+  button.addEventListener('lostpointercapture', e => { if (gesture?.id === e.pointerId) endGesture(true); });
   button.addEventListener('click', event => {
     if (ignoreClick && event.detail !== 0) { event.preventDefault(); return; }
     play();
   });
   button.addEventListener('keydown', event => {
-    const steps = { ArrowLeft: [-16, 0], ArrowRight: [16, 0], ArrowUp: [0, -16], ArrowDown: [0, 16] };
-    const step = steps[event.key];
-    if (!step) return;
+    if (event.key === 'Escape') { endGesture(true); return; }
+    const step = { ArrowLeft: [-24, 0], ArrowRight: [24, 0], ArrowUp: [0, -24], ArrowDown: [0, 24] }[event.key];
+    if (!step || (gesture && gesture.id !== null)) return;
     event.preventDefault();
-    endGesture(true);
-    stop('ここに、ぴたっ。');
-    position(button.offsetLeft + step[0], button.offsetTop + step[1]);
+    if (!gesture) { const r = button.getBoundingClientRect(); begin(r.left + r.width / 2, r.top + r.height / 2, null); }
+    gesture.clientX += step[0];
+    gesture.clientY += step[1];
+    move();
   });
+  button.addEventListener('keyup', e => { if (gesture?.id === null && e.key.startsWith('Arrow')) endGesture(); });
+  button.addEventListener('blur', () => { if (gesture?.id === null) endGesture(true); });
   control.addEventListener('click', () => stop());
-  function resetMotion() { endGesture(true); stop(); position(button.offsetLeft, button.offsetTop); }
+  function resetMotion() { endGesture(true); stop(); button.style.transform = ''; area.classList.remove('is-roaming'); }
   document.addEventListener('visibilitychange', () => { if (document.hidden) resetMotion(); });
-  new IntersectionObserver(([entry]) => { if (!entry.isIntersecting && (playing || gesture)) resetMotion(); }, { threshold: .1 }).observe(area);
+  window.addEventListener('blur', resetMotion);
+  window.addEventListener('pagehide', resetMotion);
+  window.addEventListener('scroll', showPosition, { passive: true });
+  // Scrolling the playground away must not cancel a page-wide drag.
+  new IntersectionObserver(([entry]) => { if (!entry.isIntersecting && playing && !gesture) resetMotion(); }, { threshold: .1 }).observe(area);
   reduce.addEventListener('change', resetMotion);
-  window.addEventListener('resize', resetMotion);
-  image.addEventListener('load', () => position(button.offsetLeft, button.offsetTop));
-  position(button.offsetLeft, button.offsetTop);
+  let layoutWidth = document.documentElement.clientWidth;
+  window.addEventListener('resize', () => {
+    const width = document.documentElement.clientWidth;
+    if (width !== layoutWidth) { layoutWidth = width; resetMotion(); return; }
+    // Mobile address bars change viewport height during a scroll. Keep the
+    // held character and capture alive; edge scrolling uses the new height.
+    if (gesture) showPosition();
+    else resetMotion();
+  });
 
   const cards = Array.from(document.querySelectorAll('.scene-card'));
   const sceneKey = 'tentendou.kutan.last-scenes.v2';
