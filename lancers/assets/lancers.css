@@ -1,1 +1,31 @@
 .concept-grid article{min-width:0}.concept-grid video{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#eee}.concept-grid article>span{display:block;margin-top:14px}.concept-grid article h3{font-size:18px;margin:8px 0 0}.primary-nav{margin-left:auto}@media(max-width:600px){.header-nav{gap:14px}.primary-nav{margin-left:0}}
+/* Two clear entrances from the first screen. */
+.primary-nav--entry{gap:12px;margin-left:auto}
+.entry-link{display:inline-flex;align-items:center;justify-content:space-between;gap:14px;min-width:0;min-height:48px;padding:11px 18px;border:1px solid #191919;border-radius:3px;background:#fff;color:#191919;font-size:16px;font-weight:600;line-height:1.5;white-space:nowrap;text-decoration:none}
+.primary-nav--entry .entry-link{font-size:16px!important;background:#fff;color:#191919}
+.primary-nav--entry .entry-link--primary{background:#191919;color:#fff}
+.primary-nav--entry .entry-link:hover{background:#f0f0f0;color:#191919}
+.primary-nav--entry .entry-link--primary:hover{background:#373737;color:#fff}
+.entry-link span{flex:none;font:400 20px/1 Arial,sans-serif}
+.entry-link--primary{background:#191919;color:#fff}
+.entry-link:hover{background:#f0f0f0;border-color:#191919;color:#191919}
+.entry-link--primary:hover{background:#373737;border-color:#373737;color:#fff}
+.entry-link:focus-visible{outline:3px solid #191919;outline-offset:4px}
+.hero-entry{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 40px}
+.hero-entry .entry-link{min-width:230px;min-height:58px;padding:14px 22px;font-size:18px}
+#works,#services{scroll-margin-top:12px}
+@media(max-width:700px){
+ .header-nav{flex-wrap:wrap;gap:14px;padding-block:14px}
+ .header-nav .brand{flex:1 0 100%}
+ .primary-nav--entry{width:100%;margin:0;gap:12px}
+ .primary-nav--entry .entry-link{flex:1 1 0}
+ .hero-entry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:30px}
+ .hero-entry .entry-link{min-width:0;min-height:56px;padding:14px 18px;font-size:16px}
+ #works,#services{scroll-margin-top:52px}
+}
+@media(max-width:420px){
+ .primary-nav--entry{gap:10px}
+ .primary-nav--entry .entry-link{gap:8px;padding:11px 12px}
+ .primary-nav--entry .entry-link span{font-size:18px}
+ .hero-entry{grid-template-columns:1fr}
+}
