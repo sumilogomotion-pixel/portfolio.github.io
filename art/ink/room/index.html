@@ -1,0 +1,21 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>空間を歩く｜天々堂</title><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../museum.css"><link rel="stylesheet" href="room.css"></head><body class="ink room-page"><header class="site-header"><a class="brand" href="../"><span class="brand-ja">天々堂</span><span class="brand-en">TENTENDOU</span></a><nav aria-label="展示室ナビゲーション"><a href="../">展示の入口へ</a><a href="../#works">作品一覧</a></nav></header><main><section class="virtual-gallery" aria-label="立体展示室"><canvas tabindex="0" id="gallery-world" aria-label="墨絵の立体展示室。スワイプまたはドラッグで360度見渡し、長押しで前進。矢印キーで回転と前後移動、AとDで横移動。Homeで入口へ。"></canvas><img class="world-fallback" src="../assets/gateway.webp" alt="Gateway to Another World" width="1280" height="1707" decoding="async"><div class="world-label"><h1>墨の展示室</h1><p>天々堂</p></div><div class="world-help">長押しで進む · 左右にスワイプ</div><div class="ink-hold-guide" id="ink-hold-guide"><span class="ink-hold-mark" aria-hidden="true"></span><div><strong id="ink-hold-title">長押しで向いている方へ進む</strong><small id="ink-hold-detail">指を離すと停止 · 左右にスワイプで360°見渡す</small></div></div><div class="world-controls"><button id="world-back" aria-label="少し後ろへ。長押しで後退、離すと停止" title="長押しで後退">← 後ろへ</button><button id="enter-world">→ 入る</button><a href="../#works">作品一覧へ ↓</a><button id="world-motion" aria-label="Gateの入口へ戻る">↶ 入口へ</button></div><div class="world-progress" aria-hidden="true"></div><p class="world-status" aria-live="polite"></p></section><details class="room-instructions"><summary>操作方法</summary><p>ドラッグ／スワイプで360度見渡す。長押しで前進し、離すと停止します。</p><p>キーボード：左右キーで見渡す・上下キーで前後へ・A/Dで横移動・Homeで入口へ。Escapeで停止。</p><p>Gateを通り抜けて振り返ると、Silent Anatomyの10点をご覧いただけます。</p></details></main><script src="../ink-world.js"></script><script>
+(()=>{'use strict';
+ const stage=document.querySelector('.virtual-gallery');
+ const title=document.querySelector('#ink-hold-title'),detail=document.querySelector('#ink-hold-detail');
+ const surface=stage.querySelector('.css-world')||stage.querySelector('#gallery-world');
+ const touch=matchMedia('(pointer:coarse)');
+ surface.setAttribute('aria-describedby','ink-hold-guide');
+ function guide(){
+  const mode=stage.dataset.interaction,value=Number(stage.dataset.progress||0),coarse=touch.matches;
+  let heading=coarse?'長押しで向いている方へ進む':'押し続けて向いている方へ進む';
+  let note=coarse?'指を離すと停止 · 左右にスワイプで360°見渡す':'離すと停止 · 左右にドラッグで360°見渡す';
+  if(mode==='hold'){heading='移動中 · 離すと止まります';}
+  else if(stage.classList.contains('pressing')){heading='そのまま押し続けてください';}
+  else if(mode==='auto'){heading='自動で移動しています';note='「一時停止」で止まります';}
+  if(title.textContent!==heading)title.textContent=heading;
+  if(detail.textContent!==note)detail.textContent=note;
+ }
+ new MutationObserver(guide).observe(stage,{attributes:true,attributeFilter:['data-interaction','data-progress','class']});
+ touch.addEventListener('change',guide);guide();
+})();
+</script></body></html>
