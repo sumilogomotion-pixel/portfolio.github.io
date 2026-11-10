@@ -1,0 +1,66 @@
+[
+  {
+    "file": "dela-gothic-one.woff",
+    "derived_from": "DelaGothicOne-Regular",
+    "source": "https://github.com/google/fonts/tree/main/ofl/delagothicone",
+    "license": "SIL OFL 1.1",
+    "internal_family": "Kutan Ink Display JP",
+    "bytes": 109280
+  },
+  {
+    "file": "biz-udpgothic-regular.woff",
+    "derived_from": "BIZUDPGothic-Regular",
+    "source": "https://github.com/google/fonts/tree/main/ofl/bizudpgothic",
+    "license": "SIL OFL 1.1",
+    "internal_family": "Kutan Ink Reading JP",
+    "bytes": 270296
+  },
+  {
+    "file": "biz-udpgothic-bold.woff",
+    "derived_from": "BIZUDPGothic-Bold",
+    "source": "https://github.com/google/fonts/tree/main/ofl/bizudpgothic",
+    "license": "SIL OFL 1.1",
+    "internal_family": "Kutan Ink Reading JP Bold",
+    "bytes": 269708
+  },
+  {
+    "file": "archivo-black.woff",
+    "derived_from": "ArchivoBlack-Regular",
+    "source": "https://github.com/google/fonts/tree/main/ofl/archivoblack",
+    "license": "SIL OFL 1.1",
+    "internal_family": "Kutan Ink Display Latin",
+    "bytes": 16760
+  },
+  {
+    "file": "atkinson-regular.woff",
+    "derived_from": "AtkinsonHyperlegible-Regular",
+    "source": "https://github.com/google/fonts/tree/main/ofl/atkinsonhyperlegible",
+    "license": "SIL OFL 1.1",
+    "internal_family": "Kutan Ink Reading Latin",
+    "bytes": 14960
+  },
+  {
+    "file": "atkinson-bold.woff",
+    "derived_from": "AtkinsonHyperlegible-Bold",
+    "source": "https://github.com/google/fonts/tree/main/ofl/atkinsonhyperlegible",
+    "license": "SIL OFL 1.1",
+    "internal_family": "Kutan Ink Reading Latin Bold",
+    "bytes": 15236
+  },
+  {
+    "file": "black-han-sans.woff",
+    "derived_from": "BlackHanSans-Regular",
+    "source": "https://github.com/google/fonts/tree/main/ofl/blackhansans",
+    "license": "SIL OFL 1.1",
+    "internal_family": "Kutan Ink Display KR",
+    "bytes": 48068
+  },
+  {
+    "file": "lalezar.woff",
+    "derived_from": "Lalezar-Regular",
+    "source": "https://github.com/google/fonts/tree/main/ofl/lalezar",
+    "license": "SIL OFL 1.1",
+    "internal_family": "Kutan Ink Display AR",
+    "bytes": 33692
+  }
+]

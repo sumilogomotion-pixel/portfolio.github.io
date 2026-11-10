@@ -5,19 +5,42 @@
   const image = button.querySelector('img');
   const status = document.querySelector('#play-status');
   const control = document.querySelector('#motion-control');
+  const dragControl = document.querySelector('#drag-control');
+  let touchDragEnabled = false;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const poster = '../assets/relay/05_run.png', gif = '../assets/relay/05_run.gif';
   let animation = null, timer = null, playing = false, gesture = null;
   let ignoreClick = false, clickTimer = null, frame = null, lastFrame = null;
   const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
-  function stop(message = 'タップでとことこ · はなすともどるよ') {
+  function stop(message = null) {
+    const restoreControlFocus = document.activeElement === control;
     clearTimeout(timer);
     animation?.cancel();
     animation = null;
     image.src = poster;
     playing = false;
     control.hidden = true;
-    status.textContent = message;
+    status.textContent = message ?? (touchDragEnabled ? 'はなすともどるよ。' : 'タップでとことこ。');
+    if (restoreControlFocus) button.focus({ preventScroll: true });
+  }
+  function setTouchDrag(enabled) {
+    touchDragEnabled = enabled;
+    area.classList.toggle('is-touch-drag', enabled);
+    if (dragControl) {
+      dragControl.setAttribute('aria-pressed', String(enabled));
+      dragControl.textContent = enabled ? 'スクロールにもどる' : 'ドラッグであそぶ';
+    }
+    if (!enabled) endGesture(true);
+    stop();
+  }
+  function keepHomeVisible() {
+    if (document.activeElement !== button) return;
+    button.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
+    const r = button.getBoundingClientRect();
+    const margin = 16;
+    const topDelta = r.top < margin ? r.top - margin : 0;
+    const bottomDelta = r.bottom > innerHeight - margin ? r.bottom - innerHeight + margin : 0;
+    if (topDelta || bottomDelta) window.scrollBy({ top: topDelta || bottomDelta, left: 0, behavior: 'instant' });
   }
   function showPosition() {
     if (!gesture?.moved) return;
@@ -59,11 +82,13 @@
       ignoreClick = true;
       clearTimeout(clickTimer);
       clickTimer = setTimeout(() => { ignoreClick = false; }, 700);
-      if (g.moved && !cancelled && !reduce.matches) {
+      if (g.moved && g.id !== null && !cancelled && !reduce.matches) {
         animation = button.animate([{ transform: from }, { transform: 'translate(0px, 0px)' }], { duration: 360, easing: 'ease-out' });
         timer = setTimeout(() => { animation?.cancel(); animation = null; area.classList.remove('is-roaming'); }, 360);
       } else area.classList.remove('is-roaming');
     } else area.classList.remove('is-roaming');
+    // Key users return immediately, with their original focused control visible.
+    if (g.id === null) keepHomeVisible();
   }
   function play() {
     stop();
@@ -109,6 +134,7 @@
     showPosition();
   }
   button.addEventListener('pointerdown', event => {
+    if (event.pointerType === 'touch' && !touchDragEnabled) return;
     if (gesture || event.isPrimary === false || event.button !== 0) return;
     begin(event.clientX, event.clientY, event.pointerId);
     button.setPointerCapture(event.pointerId);
@@ -129,7 +155,12 @@
     play();
   });
   button.addEventListener('keydown', event => {
-    if (event.key === 'Escape') { endGesture(true); return; }
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      event.stopPropagation();
+      setTouchDrag(false);
+      return;
+    }
     const step = { ArrowLeft: [-24, 0], ArrowRight: [24, 0], ArrowUp: [0, -24], ArrowDown: [0, 24] }[event.key];
     if (!step || (gesture && gesture.id !== null)) return;
     event.preventDefault();
@@ -137,10 +168,24 @@
     gesture.clientX += step[0];
     gesture.clientY += step[1];
     move();
+    // Scroll by the overflowing part, then compensate the viewport coordinate
+    // so following the character does not move it again in document space.
+    const r = button.getBoundingClientRect(), margin = 24;
+    const delta = r.top < margin ? r.top - margin : r.bottom > innerHeight - margin ? r.bottom - innerHeight + margin : 0;
+    if (delta) {
+      const before = scrollY;
+      window.scrollBy({ top: delta, left: 0, behavior: 'instant' });
+      gesture.clientY -= scrollY - before;
+      showPosition();
+    }
   });
   button.addEventListener('keyup', e => { if (gesture?.id === null && e.key.startsWith('Arrow')) endGesture(); });
   button.addEventListener('blur', () => { if (gesture?.id === null) endGesture(true); });
   control.addEventListener('click', () => stop());
+  dragControl?.addEventListener('click', () => setTouchDrag(!touchDragEnabled));
+  button.closest('.hero-play-row')?.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { event.preventDefault(); setTouchDrag(false); }
+  });
   function resetMotion() { endGesture(true); stop(); button.style.transform = ''; area.classList.remove('is-roaming'); }
   document.addEventListener('visibilitychange', () => { if (document.hidden) resetMotion(); });
   window.addEventListener('blur', resetMotion);
@@ -158,6 +203,8 @@
     if (gesture) showPosition();
     else resetMotion();
   });
+
+  setTouchDrag(false);
 
   const cards = Array.from(document.querySelectorAll('.scene-card'));
   const sceneKey = 'tentendou.kutan.last-scenes.v2';

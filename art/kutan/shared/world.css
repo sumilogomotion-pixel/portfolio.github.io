@@ -1,0 +1,122 @@
+/* All changes are isolated to the new multilingual private preview. */
+@font-face{font-family:KutanArabic;src:url('/portfolio.github.io/art/kutan/shared/fonts/ar-regular.woff?v=2') format('woff');font-weight:400 600;font-display:swap}
+@font-face{font-family:KutanArabic;src:url('/portfolio.github.io/art/kutan/shared/fonts/ar-bold.woff?v=2') format('woff');font-weight:700 900;font-display:swap}
+@font-face{font-family:KutanSC;src:url('/portfolio.github.io/art/kutan/shared/fonts/zh-regular.woff?v=2') format('woff');font-weight:400 600;font-display:swap}
+@font-face{font-family:KutanSC;src:url('/portfolio.github.io/art/kutan/shared/fonts/zh-bold.woff?v=2') format('woff');font-weight:700 900;font-display:swap}
+@font-face{font-family:KutanKR;src:url('/portfolio.github.io/art/kutan/shared/fonts/ko-regular.woff?v=2') format('woff');font-weight:400 600;font-display:swap}
+@font-face{font-family:KutanKR;src:url('/portfolio.github.io/art/kutan/shared/fonts/ko-bold.woff?v=2') format('woff');font-weight:700 900;font-display:swap}
+:root{--world-font:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+html:lang(ja){--world-font:Noto,'Hiragino Kaku Gothic ProN',Meiryo,sans-serif;line-break:strict;word-break:normal}
+html:lang(zh-Hans){--world-font:KutanSC,'PingFang SC','Microsoft YaHei',sans-serif;line-break:strict;word-break:normal}
+html:lang(ko){--world-font:KutanKR,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;word-break:keep-all;line-break:strict}
+html:lang(ar){--world-font:KutanArabic,'Noto Sans Arabic',Tahoma,Arial,sans-serif}
+body{font-family:var(--world-font)}
+html:not(:lang(ja)) body :is(h1,h2,h3,p,a,button,summary,span,figcaption,small){font-family:var(--world-font);letter-spacing:normal;font-style:normal}
+html:not(:lang(ja)) body :is(p,h1,h2,h3,figcaption,summary,a,button,small,span){word-break:normal;overflow-wrap:normal;hyphens:manual}
+html:lang(ko) body :is(p,h1,h2,h3,figcaption,summary,a,button,small,span){word-break:keep-all;overflow-wrap:normal}
+html:not(:lang(ja)) :is(h1,h2,h3){text-wrap:balance}
+html:not(:lang(ja)) p{text-wrap:pretty}
+html:not(:lang(ja)) .story-copy{max-width:36em;line-height:1.8;font-size:clamp(19px,1.65vw,22px)}
+html:lang(ar) .story-copy{line-height:2;font-size:clamp(20px,1.75vw,24px)}
+html:lang(ar) body{letter-spacing:0;line-height:1.9}
+.language-strip{display:flex;align-items:center;justify-content:flex-end;gap:14px;max-width:1440px;margin-inline:auto;padding:10px clamp(20px,5.6vw,80px);font:500 14px/1.45 var(--world-font);border-bottom:1px solid #e7e2dc;position:relative;z-index:10;background:#fff}
+.language-label{color:#615b55;flex-shrink:0;font-size:13px}
+.language-nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:2px 4px;margin:0;padding:0}
+.language-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:6px 10px;border-radius:5px;text-decoration:none;border:1px solid transparent;line-height:1.5;color:#443b35;font-size:14px;font-weight:550;white-space:nowrap}
+.language-nav a:lang(zh-Hans){font-family:KutanSC,sans-serif!important}.language-nav a:lang(ko){font-family:KutanKR,sans-serif!important}.language-nav a:lang(ar){font-family:KutanArabic,sans-serif!important}
+.language-nav a[aria-current=true]{background:#9d382d;border-color:#9d382d;color:#fff}
+.language-nav a:hover{border-color:#9d382d}
+.language-nav a:focus-visible{outline:3px solid #07569c;outline-offset:2px}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%);white-space:nowrap;border:0}
+.translation-note{max-width:1040px;margin:32px auto 0;padding:24px clamp(24px,5vw,40px) 40px;border-top:1px solid #e1dbd5;color:#544c45;font:400 14px/1.8 var(--world-font)}
+.translation-note summary{cursor:pointer;min-height:44px;padding-block:8px;font-weight:650}
+.translation-note p{max-width:72ch;margin:10px 0}.translation-note .preview-label{font-size:12px;letter-spacing:.04em;color:#6d625a}
+.external-language{display:block;font-size:11px;line-height:1.6;font-weight:400;color:#665b53}
+.maker-link{flex-wrap:wrap;column-gap:8px;row-gap:0;max-width:48%;white-space:normal}.maker-link .external-language{width:100%;font-size:10px}.maker-link span{white-space:normal}
+.kutan-home .site-header nav{gap:20px;flex-wrap:wrap;justify-content:flex-end}
+.kutan-home .site-header nav a{display:flex!important;white-space:normal}
+.kutan-home [data-wordmark],.kutan-home [data-wordmark] span{font-family:Maru,Noto,sans-serif!important;letter-spacing:-.07em!important;direction:ltr;word-break:keep-all}
+.kutan-home [data-wordmark]{justify-content:flex-start}
+.kutan-home .friends{padding-top:60px;padding-bottom:65px}.kutan-home .about-story{padding-block:50px 90px}
+html:not(:lang(ja)) .packed-question,html:not(:lang(ja)) .packed-heading{display:block!important;font-size:clamp(36px,4.1vw,60px);line-height:1.2;letter-spacing:normal;max-width:13ch}
+html:not(:lang(ja)) .section-heading h2{font-size:clamp(34px,3.9vw,56px);line-height:1.2;max-width:22ch}
+html:not(:lang(ja)) .story-copy .story-lead{font-size:clamp(26px,2.6vw,36px);line-height:1.4;font-weight:750}
+html:not(:lang(ja)) .hero-lead{max-width:34ch;line-height:1.7}
+html:not(:lang(ja)) .friend-grid h3{font-size:clamp(26px,2.7vw,36px);line-height:1.35}
+html:not(:lang(ja)) .friend-grid .friend-trait{line-height:1.7;font-size:21px}
+html:not(:lang(ja)) .destinations strong{font-size:clamp(23px,2.3vw,31px);line-height:1.35;text-wrap:balance}
+html:not(:lang(ja)) .destinations small{line-height:1.7}
+html:not(:lang(ja)) .explore-heading{align-items:flex-start}
+html:not(:lang(ja)) .footer-invitation h2{line-height:1.3}
+html:not(:lang(ja)) .eyebrow{letter-spacing:.01em}
+html:not(:lang(ja)) .about-heading{min-height:300px}
+html:not(:lang(ja)) .story-peek{position:relative;top:auto;left:auto;right:auto;margin-block-start:24px;margin-inline-start:8%;width:180px;height:180px}
+html:not(:lang(ja)) .story-peek img{width:200px}
+html[dir=rtl] .story-copy,html[dir=rtl] .friend-grid,html[dir=rtl] .destination-copy,html[dir=rtl] .footer-invitation{text-align:start}
+html[dir=rtl] .hero,html[dir=rtl] .about-story,html[dir=rtl] .friends-layout,html[dir=rtl] .scene-grid,html[dir=rtl] .destinations{direction:rtl}
+html[dir=rtl] .hero-character,html[dir=rtl] .friends-art img,html[dir=rtl] .scene-card img,html[dir=rtl] .destination-art,html[dir=rtl] .footer-peek{direction:ltr}
+html[dir=rtl] .runner-name{text-align:right}
+html[dir=rtl] .destination-arrow{transform:scaleX(-1)}
+html[dir=rtl] .destination:hover .destination-arrow{transform:scaleX(-1) translateX(6px)}
+html[dir=rtl] .social-links,html[dir=rtl] .kutan-social{direction:ltr;justify-content:flex-end}
+html[dir=rtl] .social-links a>span,html[dir=rtl] .kutan-social a>span{text-align:left;direction:ltr;unicode-bidi:isolate}
+html[dir=rtl] .footer-bottom small,html[dir=rtl] .viewer-count,html[dir=rtl] #viewer-count{unicode-bidi:plaintext}
+html[dir=rtl] .entrance-cta,html[dir=rtl] .work-open,html[dir=rtl] .county-works figcaption{text-align:start}
+html:not(:lang(ja)) .collection-links{font-size:15px;gap:4px 18px}
+html:not(:lang(ja)) .person h2{flex-wrap:wrap;gap:4px 16px;line-height:1.45}
+html:not(:lang(ja)) .person-position{font-size:13px}
+html:not(:lang(ja)) .season-jumps{flex-wrap:wrap;gap:6px 12px}
+html:not(:lang(ja)) .season-jumps a{padding:0 8px}
+html:not(:lang(ja)) .works .work-caption{flex-wrap:wrap;align-items:baseline}
+html:not(:lang(ja)) .character-intro h1{line-height:1.45}
+html:not(:lang(ja)) .art-title,html:not(:lang(ja)) .art-context{overflow-wrap:normal;word-break:normal}
+html:not(:lang(ja)) .art-context{font-size:13px;line-height:1.7}
+html:not(:lang(ja)) .viewer-bottom{flex-wrap:wrap;justify-content:space-between}
+html:not(:lang(ja)) .viewer-bottom h2{flex:1 1 38%;line-height:1.5}
+html:not(:lang(ja)) .viewer-bottom button{white-space:normal;max-width:28%;line-height:1.5}
+html:not(:lang(ja)) .viewer-header{flex-wrap:wrap;align-items:center}
+html:not(:lang(ja)) .viewer-original{font-size:14px;line-height:1.6}
+html:not(:lang(ja)) dialog .collection-links{font-size:13px;line-height:1.5}
+html:not(:lang(ja)) .prefecture-names{gap:8px 16px}
+html:not(:lang(ja)) .prefecture-names button{padding:8px 4px;font-family:var(--world-font);text-align:start}
+html:not(:lang(ja)) .japan-navigator h2{font-size:25px;line-height:1.45}
+html:not(:lang(ja)) .county-works figcaption{align-items:baseline;flex-wrap:wrap;gap:6px 16px}
+html:not(:lang(ja)) .county-works figcaption h3{font-size:18px;line-height:1.6}
+html:not(:lang(ja)) :is(a,button,summary){min-height:44px}
+@media(min-width:761px) and (max-width:1050px){html:not(:lang(ja)) .about-story{gap:5%}html:not(:lang(ja)) .packed-question{font-size:40px}html:not(:lang(ja)) .destinations{gap:24px}.language-strip{padding-inline:32px}}
+@media(max-width:760px){
+ .language-strip{display:block;padding:6px 14px 8px}.language-label{display:none}.language-nav{justify-content:center;gap:2px}.language-nav a{font-size:13px;padding:5px 9px;min-height:44px}
+ .kutan-home .site-header{align-items:center;gap:12px;padding-block:12px}.maker-link{font-size:17px;max-width:44%;line-height:1.4}.maker-link span{display:none}.kutan-home .site-header nav{gap:4px 14px;font-size:13px;max-width:60%;line-height:1.5}
+ .kutan-home .hero{padding-top:18px}.kutan-home .friends{padding-top:52px;padding-bottom:30px}.kutan-home .about-story{padding-top:48px;padding-bottom:70px}
+ html:not(:lang(ja)) .about-heading{min-height:0;display:flex;align-items:center;gap:16px;margin-bottom:28px;padding:0}
+ html:not(:lang(ja)) .packed-question{font-size:clamp(30px,8.4vw,44px);max-width:12ch;flex:1;line-height:1.25}
+ html:not(:lang(ja)) .story-peek{margin:0;width:90px;min-width:90px;height:120px;overflow:hidden}html:not(:lang(ja)) .story-peek img{width:135px}
+ html:not(:lang(ja)) .section-heading h2{font-size:clamp(32px,8.2vw,43px);line-height:1.25;max-width:18ch}
+ html:not(:lang(ja)) .friends-intro{font-size:19px;line-height:1.85}
+ html:not(:lang(ja)) .explore-heading{display:block}html:not(:lang(ja)) .explore-heading p{margin-top:20px;max-width:30ch;font-size:18px}
+ html:not(:lang(ja)) .destinations a{grid-template-columns:minmax(0,36%) minmax(0,1fr);gap:20px}
+ html:not(:lang(ja)) .destinations strong{font-size:25px;line-height:1.35}html:not(:lang(ja)) .destinations small{font-size:16px}
+ html:not(:lang(ja)) .footer-invitation h2{font-size:32px}
+ html:not(:lang(ja)) .art-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 22px}
+ html:not(:lang(ja)) .character-intro{gap:20px;align-items:start}
+ html:not(:lang(ja)) .character-intro h1{font-size:24px}
+ html:not(:lang(ja)) .collection-links{gap:0 14px;line-height:1.7}
+ html:not(:lang(ja)) dialog .collection-links{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px}
+ html:not(:lang(ja)) .japan-header{font-size:14px;flex-wrap:wrap}
+ html:not(:lang(ja)) .social-links{gap:20px;flex-wrap:wrap}
+ html:not(:lang(ja)) .story-copy{font-size:20px}
+ html:lang(ar) .story-copy{font-size:21px;line-height:2}
+ html:lang(ar) .hero-copy{text-align:right}
+ .translation-note{margin-top:20px;font-size:14px}
+}
+@media(max-width:380px){
+ .language-nav a{padding-inline:8px;font-size:12px}.language-strip{padding-inline:10px}
+ html:not(:lang(ja)) .art-grid{grid-template-columns:1fr}.kutan-home .site-header{display:block}.maker-link{max-width:none}.maker-link .external-language{display:none}.kutan-home .site-header nav{justify-content:flex-start;max-width:100%;gap:14px;margin-top:5px}
+ html:not(:lang(ja)) .destinations a{grid-template-columns:1fr;gap:12px;padding-block:28px}html:not(:lang(ja)) .destination-art{height:230px;max-height:230px;justify-content:flex-start}html:not(:lang(ja)) .destinations strong{font-size:28px}
+ html:not(:lang(ja)) .about-heading{display:block}html:not(:lang(ja)) .story-peek{display:none}html:not(:lang(ja)) .character-intro{flex-direction:column}html:not(:lang(ja)) .character-intro img{max-width:65%;width:220px}
+ html:not(:lang(ja)) dialog .collection-links{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation:none!important;transition:none!important}}
+.world-name{display:none}html:not(:lang(ja)) .world-name{display:block;margin:-12px 0 22px;color:#9d382d;font-size:18px;font-weight:700;line-height:1.5}
+@media(max-width:760px){.kutan-home .site-header{display:block}.kutan-home .maker-link{max-width:100%;width:fit-content}.kutan-home .site-header nav{max-width:100%;justify-content:flex-start;gap:4px 20px;margin-top:4px}.kutan-home .site-header nav a{min-height:44px}.kutan-home .maker-link .external-language{display:none}}
+.story-peek{direction:ltr}
