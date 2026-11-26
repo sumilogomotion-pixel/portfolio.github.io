@@ -29,9 +29,8 @@
   :focus-visible > img[data-ink-arriving] { animation: none; }
 }
 @keyframes ink-slide-in {
-  from { transform: translateX(var(--ink-entry-offset)); opacity: 0; }
-  22% { opacity: .72; }
-  to { transform: translateX(0); opacity: 1; }
+  from { transform: translateX(var(--ink-entry-offset)); }
+  to { transform: translateX(0); }
 }
 </style><link rel="preload" as="font" href="fonts/museum-serif.woff" type="font/woff" crossorigin></head><body id="top"><a class="skip" href="#works">作品へ移動</a><header class="site-header"><a class="brand" href="./" aria-label="天々堂 墨の展示室 トップ"><span class="brand-ja">天々堂</span><span class="brand-en">TENTENDOU</span></a><nav aria-label="メインナビゲーション"><a href="#yokai">妖怪の墨絵</a><a href="room/">展示室</a><a href="#contact">お問い合わせ</a></nav></header><main><section class="ink-opening" aria-labelledby="hero-title">
 <figure id="work-if02"><a class="art-link ink-hero-image" href="assets/if02.png" data-title="if02" data-note="額装した全体 / Framed artwork" aria-label="if02 の全体を拡大"><img src="assets/if02.png" width="1536" height="2048" alt="墨の細密な曲線で描かれた横向きの顔と、その周りの植物や人物。作品 if02。" fetchpriority="high" decoding="async"></a><figcaption class="ink-hero-label"><span>if02<span class="ink-detail-note">（部分）</span></span><span class="ink-detail-note">額装した全体を見る ＋</span><span class="ink-mobile-note">作品を拡大 ＋</span></figcaption></figure>
@@ -68,12 +67,12 @@
         if (event.animationName === 'ink-slide-in') delete image.dataset.inkArriving;
       }, {once:true});
     }
-  }, {rootMargin: '0px 0px -40px 0px', threshold: 0});
+  }, {rootMargin: '0px 0px 12% 0px', threshold: 0});
   groups.forEach((selector, group) => {
     document.querySelectorAll(selector).forEach((link, item) => {
       directions.set(link, (group + item) % 2 ? 'left' : 'right');
       // Restored scroll, deep links and already-visible works stay fully readable.
-      if (link.getBoundingClientRect().top < innerHeight * .88) return;
+      if (link.getBoundingClientRect().top < innerHeight) return;
       link.addEventListener('focusin', () => {
         seen.add(link);
         observer.unobserve(link);
